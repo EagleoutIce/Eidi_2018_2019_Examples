@@ -10,11 +10,14 @@ public class ConsList<T> implements Iterable<T> {
                 head.next = new Cons<T>(obj);
                 foot = head.next; 
             } else {
-                foot.next = new Cons<T>(obj);
-                foot = new Cons<T>(obj);
+                Cons<T> t = new Cons<T>(obj);
+                foot.next = t;
+                foot =t;    
             }
         }
 
+        public boolean isEmpty() {return head == null;}
+        
         public boolean contains(T obj){
             Cons it = head;
             while(it != null) {
@@ -78,13 +81,5 @@ public class ConsList<T> implements Iterable<T> {
             public T next () {it = it.next; return it.value;}
         }
 
-        public static void main(String[] args){
-            ConsList<String> a = new ConsList<String>();
-            a.append("Hallo"); a.append("WALLO"); a.append("DACKEL");
-            System.out.println(a);
-            a.remove("rofl"); a.remove("WALLO");
-            System.out.println(a);
-            System.out.println(a.removeHead());
-        }
 
 }
